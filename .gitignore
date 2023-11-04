@@ -6,3 +6,5 @@ build/9849d3fde14f8238bc82d80453267a41.cache.dill.track.dill
 *.cc
 *.cmake
 .flutter-plugins-dependencies
+.flutter-plugins-dependencies
+build/flutter_assets/NOTICES
