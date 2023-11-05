@@ -1,3 +1,4 @@
+import 'package:english_learning_app/views/sentence_list_page.dart';
 import 'package:flutter/material.dart';
 import 'sentence_input_page.dart';
 import 'sorting_question_page.dart'; // 並び替え問題ページもインポートする
@@ -31,6 +32,16 @@ class TopPage extends StatelessWidget {
                 );
               },
               child: Text('Sorting Test'), // 並び替え問題ページへのボタンテキスト
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SentenceListPage()),
+                );
+              },
+              child: Text('Sentences List'),
             ),
           ],
         ),
