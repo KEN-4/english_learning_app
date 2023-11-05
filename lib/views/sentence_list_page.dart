@@ -62,15 +62,19 @@ class _SentenceListPageState extends State<SentenceListPage> {
         ],
       ),
       body: ListView.builder(
-        itemCount: sentences.length,
-        itemBuilder: (context, index) {
-          final sentence = sentences[index];
-          return ListTile(
-            title: Text(sentence['english']),
-            subtitle: Text('Difficulty: ${sentence['difficulty']}'),
-          );
-        },
-      ),
-    );
-  }
+      itemCount: sentences.length,
+      itemBuilder: (context, index) {
+        final sentence = sentences[index];
+        return ListTile(
+          title: Center( // タイトルを中央に配置
+            child: Text(sentence['english']),
+          ),
+          subtitle: Center( // サブタイトルを中央に配置
+            child: Text('Difficulty: ${sentence['difficulty']}'),
+          ),
+        );
+      },
+    ),
+  );
 }
+} 

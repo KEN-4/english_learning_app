@@ -88,34 +88,46 @@ class _SortingQuestionPageState extends State<SortingQuestionPage> {
     SortingQuestion currentQuestion = questionList[currentQuestionIndex];
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text('Translate this sentence into English:', style: TextStyle(fontSize: 20)),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Text(currentQuestion.translation, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          ),
-          Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            children: currentWords.map((word) => ElevatedButton(
-              onPressed: () => reorderWord(word),
-              child: Text(word),
-            )).toList(),
-          ),
-          const SizedBox(height: 20),
-          Text('Your Answer: ${currentWords.join(' ')}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          ElevatedButton(
-            onPressed: checkAnswer,
-            child: const Text('Check Answer'),
-          ),
-          if (currentQuestionIndex < questionList.length - 1)
-            ElevatedButton(
-              onPressed: goToNextQuestion,
-              child: const Text('Next Question'),
+      child: Center( // Centerウィジェットでラップ
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // 子の高さに合わせる
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center, // 水平方向に中央寄せ
+          children: [
+            const Text(
+              'Translate this sentence into English:',
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center, // テキストを中央寄せ
             ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Text(
+                currentQuestion.translation,
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center, // テキストを中央寄せ
+              ),
+            ),
+            Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: currentWords.map((word) => ElevatedButton(
+                onPressed: () => reorderWord(word),
+                child: Text(word),
+              )).toList(),
+            ),
+            const SizedBox(height: 20),
+            Text('Your Answer: ${currentWords.join(' ')}', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ElevatedButton(
+              onPressed: checkAnswer,
+              child: const Text('Check Answer'),
+            ),
+            if (currentQuestionIndex < questionList.length - 1)
+              ElevatedButton(
+                onPressed: goToNextQuestion,
+                child: const Text('Next Question'),
+              ),
+          ],
+        ),
       ),
     );
   }
